@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ArrayEntitiesTest {
 
     @Test
-    void getElements() {
+    void testGetElements() {
         Integer[] testPreArray={10,20,30};
         ArrayEntities testIdentity=new ArrayEntities(testPreArray);
         List testList=testIdentity.getElements();
@@ -21,7 +21,7 @@ class ArrayEntitiesTest {
 
 
     @Test
-    void getSize() {
+    void testGetSize() {
         ArrayEntities testIdentity=new ArrayEntities(1,2,3);
         assertTrue(testIdentity.getSize()==3);
     }

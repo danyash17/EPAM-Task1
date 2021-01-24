@@ -7,38 +7,38 @@ import static org.junit.jupiter.api.Assertions.*;
 class ArrayTest extends ArrayEntities {
 
     @org.junit.jupiter.api.Test
-    void findMax() throws Exception {
+    void testFindMaxWhenAppliedThreePositives() throws Exception {
         Array testIdentity=new Array(10,20,30);
         assertEquals(testIdentity.findMax(),30);
     }
 
     @org.junit.jupiter.api.Test
-    void replace() throws Exception {
+    void testReplaceOneElementOfThree() throws Exception {
         Array testIdentity=new Array(10,20,30);
         assertTrue(testIdentity.replace(30,100));
     }
 
     @org.junit.jupiter.api.Test
-    void summary() throws Exception {
+    void testSummaryOfThreePositives() throws Exception {
         Array testIdentity=new Array(10,20,30);
-        assertEquals(testIdentity.summary(),60);
+        assertEquals(testIdentity.giveSummary(),60);
     }
 
     @org.junit.jupiter.api.Test
-    void average() throws Exception {
+    void testAverageOfThreePositives() throws Exception {
         Array testIdentity=new Array(10,20,30);
         assertEquals(testIdentity.average(),20);
     }
 
     @org.junit.jupiter.api.Test
-    void negatives() throws Exception {
+    void testNegativesOfThreeNumbersWhenTwoAreNegative() throws Exception {
         Array testIdentity=new Array(-10,-20,30);
-        assertEquals(testIdentity.negatives(),2);
+        assertEquals(testIdentity.giveNegatives(),2);
     }
 
     @org.junit.jupiter.api.Test
-    void positives() throws Exception {
+    void testPositivesOfThreeNumbersWhenTwoArePositives() throws Exception {
         Array testIdentity=new Array(10,20,-30);
-        assertEquals(testIdentity.positives(),2);
+        assertEquals(testIdentity.givePositives(),2);
     }
 }

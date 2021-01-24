@@ -47,7 +47,7 @@ public class Array<T> extends ArrayEntities implements Report {
         return true;
     }
 
-    public <T extends Number> double summary() throws Exception {
+    public <T extends Number> double giveSummary() throws Exception {
         if (elements==null) throw new Exception("Null Array");
         int end = length;
         T undefSum=(T) elements.get(0);
@@ -60,9 +60,9 @@ public class Array<T> extends ArrayEntities implements Report {
         return sum;
     }
     public double average() throws Exception {
-        return summary()/length;
+        return giveSummary()/length;
     }
-    public<T extends Number> int negatives() throws Exception{
+    public<T extends Number> int giveNegatives() throws Exception{
         if (elements==null) throw new Exception("Null Array");
         int end=length;
         int count=0;
@@ -72,7 +72,7 @@ public class Array<T> extends ArrayEntities implements Report {
         }
         return count;
     }
-    public<T extends Number> int positives () throws Exception{
+    public<T extends Number> int givePositives() throws Exception{
         if (elements==null) throw new Exception("Null Array");
         int end=length;
         int count=0;
