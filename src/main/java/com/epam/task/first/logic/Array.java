@@ -2,11 +2,13 @@ package com.epam.task.first.logic;
 
 import com.epam.task.first.entities.ArrayEntities;
 import com.epam.task.first.face.Report;
+import com.epam.task.first.sorter.ArraySorter;
 
+import java.util.Collections;
 import java.util.List;
 
 //extended class with logics
-public class Array<T> extends ArrayEntities implements Report {
+public class Array<T> extends ArrayEntities implements Report, ArraySorter {
     public Array(T... elements) {
         super(elements);
     }
@@ -18,7 +20,7 @@ public class Array<T> extends ArrayEntities implements Report {
     private final int length = super.getSize();
 
     public <T extends Comparable<T>> T findMax() throws Exception {
-        if (elements==null) throw new Exception("Null Array");
+        if (elements == null) throw new Exception("Null Array");
         List buff = super.getElements();
         int i = 0;
         int end = length;
@@ -32,13 +34,13 @@ public class Array<T> extends ArrayEntities implements Report {
     }
 
     //return false if replace is not done
-    public <T> boolean replace( T toChange,T key) throws Exception {
-        if (elements==null) throw new Exception("Null Array");
+    public <T> boolean replace(T toChange, T key) throws Exception {
+        if (elements == null) throw new Exception("Null Array");
         int end = length;
         for (int i = 0; i < end; i++) {
             if (elements.get(i).equals(toChange)) {
                 try {
-                    elements.set(i,key);
+                    elements.set(i, key);
                 } catch (IllegalArgumentException e) {
                     System.out.println("Illegal argument");
                 }
@@ -48,42 +50,46 @@ public class Array<T> extends ArrayEntities implements Report {
     }
 
     public <T extends Number> double giveSummary() throws Exception {
-        if (elements==null) throw new Exception("Null Array");
+        if (elements == null) throw new Exception("Null Array");
         int end = length;
-        T undefSum=(T) elements.get(0);
-        Double sum= undefSum.doubleValue();
+        T undefSum = (T) elements.get(0);
+        Double sum = undefSum.doubleValue();
         for (int i = 1; i < end; i++) {
-            T undefCurrent=(T) elements.get(i);
-            Double current= undefCurrent.doubleValue();
-            sum+=current;
+            T undefCurrent = (T) elements.get(i);
+            Double current = undefCurrent.doubleValue();
+            sum += current;
         }
         return sum;
     }
+
     public double average() throws Exception {
-        return giveSummary()/length;
+        return giveSummary() / length;
     }
-    public<T extends Number> int giveNegatives() throws Exception{
-        if (elements==null) throw new Exception("Null Array");
-        int end=length;
-        int count=0;
-        for(int i=0;i<end;i++){
-            T undefCurrent=(T)elements.get(i);
-            if(undefCurrent.intValue()<0) count++;
+
+    public <T extends Number> int giveNegatives() throws Exception {
+        if (elements == null) throw new Exception("Null Array");
+        int end = length;
+        int count = 0;
+        for (int i = 0; i < end; i++) {
+            T undefCurrent = (T) elements.get(i);
+            if (undefCurrent.intValue() < 0) count++;
         }
         return count;
     }
-    public<T extends Number> int givePositives() throws Exception{
-        if (elements==null) throw new Exception("Null Array");
-        int end=length;
-        int count=0;
-        for(int i=0;i<end;i++){
-            T undefCurrent=(T)elements.get(i);
-            if(undefCurrent.intValue()>0) count++;
+
+    public <T extends Number> int givePositives() throws Exception {
+        if (elements == null) throw new Exception("Null Array");
+        int end = length;
+        int count = 0;
+        for (int i = 0; i < end; i++) {
+            T undefCurrent = (T) elements.get(i);
+            if (undefCurrent.intValue() > 0) count++;
         }
         return count;
     }
-    public void print(Array content) {
-        if (elements==null) System.out.println("null");
+
+    public void print() {
+        if (elements == null) System.out.println("null");
         int i = 0;
         int end = length;
         System.out.println("___");
@@ -92,6 +98,10 @@ public class Array<T> extends ArrayEntities implements Report {
             i++;
         }
         System.out.println("___");
+    }
+
+    public void mergeSort() {
+        Collections.sort(elements);
     }
 }
 
